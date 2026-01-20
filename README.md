@@ -73,3 +73,6 @@ To deploy on Hugging Face Spaces:
 4. Upload files (app.py, employee_model.pkl, requirement.txt).
 
 5. Space will auto‑build and launch your app.
+
+
+# Live Link: https://huggingface.co/spaces/rubina25/Employee-Attrition-Prediction-System
