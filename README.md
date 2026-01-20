@@ -76,6 +76,9 @@ To deploy on Hugging Face Spaces:
 
 ----
 
-# Live Link: 
+
+# 🚀 Live Link
 
 **https://huggingface.co/spaces/rubina25/Employee-Attrition-Prediction-System**
+
+Check out the deployed app here: [Employee Attrition Prediction System](https://huggingface.co/spaces/rubina25/Employee-Attrition-Prediction-System) 🌐
