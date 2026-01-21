@@ -58,6 +58,14 @@ python app.py
 # 📊 Example Predictions
 
 
+| Age | Monthly Income | Job Role             | OverTime | Prediction        |
+|-----|----------------|----------------------|----------|-------------------|
+| 28  | 3500           | Sales Executive      | Yes      | ✅ No Attrition   |
+| 45  | 8000           | Manager              | No       | ✅ No Attrition   |
+| 32  | 4200           | Laboratory Technician| Yes      | ❌ Attrition Likely|
+| 50  | 12000          | Research Director    | No       | ✅ No Attrition    |
+| 29  | 3000           | Sales Representative | Yes      | ❌ Attrition Likely|
+
 
 ---
 
