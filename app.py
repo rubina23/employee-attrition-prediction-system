@@ -13,14 +13,15 @@ import pickle
 with open("employee_model.pkl", "rb") as f:
     pipeline = pickle.load(f)
 
-# 2. Prediction function
-def predict_attrition(Age, MonthlyIncome, JobRole, OverTime):
-    input_data = pd.DataFrame([[Age, MonthlyIncome, JobRole, OverTime]],
-                              columns=['Age','MonthlyIncome','JobRole','OverTime'])
+# Prediction function
+def predict_attrition(Age, MonthlyIncome, JobRole, OverTime, Department, YearsAtCompany):
+    input_data = pd.DataFrame([[Age, MonthlyIncome, JobRole, OverTime, Department, YearsAtCompany]],
+                              columns=['Age','MonthlyIncome','JobRole','OverTime','Department','YearsAtCompany'])
     prediction = pipeline.predict(input_data)[0]
-    return "Attrition" if prediction == 1 else "No Attrition"
+    return "✅Yes" if prediction == 1 else "❌No"
 
-# 3. Gradio interface
+
+# Gradio interface
 inputs = [
     gr.Number(label="Age"),
     gr.Number(label="Monthly Income"),
@@ -29,7 +30,11 @@ inputs = [
         "Manufacturing Director", "Healthcare Representative", "Manager",
         "Sales Representative", "Research Director", "Human Resources"
     ]),
-    gr.Dropdown(label="OverTime", choices=["Yes", "No"])
+    gr.Dropdown(label="OverTime", choices=["Yes", "No"]),
+    gr.Dropdown(label="Department", choices=[
+        "Sales", "Research and Development", "Human Resources"
+    ]),
+    gr.Number(label="YearsAtCompany")
 ]
 
 employee_app = gr.Interface(
@@ -42,6 +47,8 @@ employee_app = gr.Interface(
 
 employee_app.launch(share=True)
 
+
 """## **11. Deployment to Hugging Face (10 Marks)**
-Hugging Face Spaces public URL:
+
+Hugging Face Spaces public URL: 
 """

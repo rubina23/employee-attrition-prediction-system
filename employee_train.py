@@ -1,3 +1,4 @@
+
 # **Employee Attrition Prediction System**
 
 # Steps:
@@ -19,8 +20,9 @@ from sklearn.metrics import accuracy_score, classification_report, confusion_mat
 from sklearn.model_selection import train_test_split, GridSearchCV, cross_val_score
 
 
+
 # Dataset load
-df = pd.read_csv("WA_Fn-UseC_-HR-Employee-Attrition.csv")
+df = pd.read_csv("employee-attrition.csv")
 
 # Display first few rows and shape
 print(df.head())
@@ -36,16 +38,13 @@ Perform and document at least 5 distinct preprocessing steps (e.g., handling mis
 # 1. Handle Missing Values
 df = df.dropna()
 
-# 2. Encode Target Variable
-X = df[['Age', 'MonthlyIncome', 'JobRole', 'OverTime']]
+# 2. Preprocessing
+X = df[['Age', 'MonthlyIncome', 'JobRole', 'OverTime', 'Department', 'YearsAtCompany']]
 y = df['Attrition'].map({'Yes':1, 'No':0}).astype(int)
 
-# # 3. Feature Engineering (Age buckets)
-# X['AgeGroup'] = pd.cut(X['Age'], bins=[18,30,40,50,60], labels=['Young','Mid','Senior','Late'])
-
-# Separate categorical and numeric columns
-categorical_cols = ['JobRole', 'OverTime']
-numeric_cols = ['Age', 'MonthlyIncome']
+# 3. Separate categorical and numeric columns
+categorical_cols = ['JobRole', 'OverTime', 'Department']
+numeric_cols = ['Age', 'MonthlyIncome', 'YearsAtCompany']
 
 # 4. Outlier Detection (IQR method)
 Q1 = X[numeric_cols].quantile(0.25)
@@ -56,18 +55,12 @@ mask = ~((X[numeric_cols] < (Q1 - 1.5 * IQR)) |
 X = X[mask]
 y = y[mask]
 
-# 3. Preprocessor
-categorical_cols = ['JobRole', 'OverTime']
-numeric_cols = ['Age', 'MonthlyIncome']
-
 # 5. Preprocessor (scaling + one-hot encoding)
 preprocessor = ColumnTransformer(
     transformers=[
         ('num', StandardScaler(), numeric_cols),
         ('cat', OneHotEncoder(drop='first', handle_unknown='ignore'), categorical_cols)
     ])
-# ------
-# pipeline.fit(X, y)
 
 """## **3. Pipeline Creation (10 Marks)**
 Construct a standard Machine Learning pipeline that integrates preprocessing and the model
@@ -75,7 +68,7 @@ Construct a standard Machine Learning pipeline that integrates preprocessing and
 
 pipeline = Pipeline(steps=[
     ('preprocessor', preprocessor),
-    ('model', RandomForestClassifier(random_state=42))
+    ('model', RandomForestClassifier(random_state=42, class_weight='balanced'))
 ])
 
 """## **4. Primary Model Selection (5 Marks)**
@@ -91,7 +84,6 @@ Train your selected model using the training portion of your dataset.
 """
 
 # Train the pipeline on the training data
-
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 pipeline.fit(X_train, y_train)
 
@@ -100,7 +92,6 @@ Apply Cross-Validation  to assess robustness and report the average score with s
 """
 
 # Apply 5-fold cross-validation on the training set
-
 scores = cross_val_score(pipeline, X_train, y_train, cv=5)
 print("CV Mean:", scores.mean())
 print("CV Std:", scores.std())
@@ -136,7 +127,6 @@ Evaluate the model on the test set and print comprehensive metrics suitable for 
 """
 
 # Predict on the test set
-
 y_pred = best_model.predict(X_test)
 
 print("Test Accuracy:", accuracy_score(y_test, y_pred))

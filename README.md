@@ -58,13 +58,14 @@ python app.py
 # 📊 Example Predictions
 
 
-| Age | Monthly Income | Job Role             | OverTime | Prediction        |
-|-----|----------------|----------------------|----------|-------------------|
-| 28  | 3500           | Sales Executive      | Yes      | ✅ No Attrition   |
-| 45  | 8000           | Manager              | No       | ✅ No Attrition   |
-| 32  | 4200           | Laboratory Technician| Yes      | ❌ Attrition Likely|
-| 50  | 12000          | Research Director    | No       | ✅ No Attrition    |
-| 29  | 3000           | Sales Representative | Yes      | ❌ Attrition Likely|
+| Age | MonthlyIncome | JobRole               | OverTime | Department             | YearsAtCompany | Attrition  |
+|-----|---------------|-----------------------|----------|------------------------|----------------|------------|
+| 41  | 5993          | Sales Executive       | Yes      | Sales                  | Yes            | ✅ Yes    |
+| 49  | 5130          | Research Scientist    | No       | Research & Development | No             | ❌ No     |
+| 37  | 2090          | Laboratory Technician | Yes      | Research & Development | Yes            | ✅ Yes    |
+| 33  | 2909          | Research Scientist    | Yes      | Research & Development | No             | ❌ No     |
+| 27  | 3468          | Laboratory Technician | No       | Research & Development | Yes            | ❌ No     |
+
 
 
 ---
