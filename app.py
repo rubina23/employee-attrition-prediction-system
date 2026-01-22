@@ -43,6 +43,3 @@ employee_app = gr.Interface(
 
 employee_app.launch(share=True)
 
-
-## **11. Deployment to Hugging Face**
-# Hugging Face Spaces public URL: https://huggingface.co/spaces/rubina25/Employee-Attrition-Prediction-System
