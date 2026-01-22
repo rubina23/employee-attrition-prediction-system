@@ -1,13 +1,9 @@
 
-## **10. Web Interface with Gradio (10 Marks)**
-
-# Create a user-friendly Gradio web interface that takes user inputs and displays the prediction from your trained model.
-
+## **10. Web Interface with Gradio**
 
 import pandas as pd
 import gradio as gr
 import pickle
-
 
 # 1. Loaded saved model
 with open("employee_model.pkl", "rb") as f:
@@ -48,7 +44,5 @@ employee_app = gr.Interface(
 employee_app.launch(share=True)
 
 
-"""## **11. Deployment to Hugging Face (10 Marks)**
-
-Hugging Face Spaces public URL: 
-"""
+## **11. Deployment to Hugging Face**
+# Hugging Face Spaces public URL: https://huggingface.co/spaces/rubina25/Employee-Attrition-Prediction-System
