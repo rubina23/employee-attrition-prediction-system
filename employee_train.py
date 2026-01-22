@@ -23,7 +23,6 @@ print(df.head())
 print("Dataset shape:", df.shape)
 
 ## **2. Data Preprocessing**
-
 # Handle Missing Values
 df = df.dropna()
 
@@ -59,29 +58,21 @@ pipeline = Pipeline(steps=[
     ('model', RandomForestClassifier(random_state=42, class_weight='balanced'))
 ])
 
-## **4. Primary Model Selection**
-
-**Answer:**  Random Forest Classifier chosen because:
-*   Handles categorical + numerical features well.
-*   Robust to outliers and scaling issues.
-*   Provides feature importance for HR insights.
-
-## **5. Model Training**
+## **4. Model Training**
 
 # Train the pipeline on the training data
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 pipeline.fit(X_train, y_train)
 
-## **6. Cross-Validation**
+## **5. Cross-Validation**
 
 # Apply 5-fold cross-validation on the training set
 scores = cross_val_score(pipeline, X_train, y_train, cv=5)
 print("CV Mean:", scores.mean())
 print("CV Std:", scores.std())
 
-## **7. Hyperparameter Tuning**
+## **6. Hyperparameter Tuning**
 
-# 7. Hyperparameter tuning
 param_grid = {
     'model__n_estimators': [100, 200, 300],
     'model__max_depth': [None, 10, 20],
@@ -94,13 +85,12 @@ grid.fit(X_train, y_train)
 print("Best Params:", grid.best_params_)
 print("Best Score:", grid.best_score_)
 
-## **8. Best Model Selection**
-
+## **7. Best Model Selection**
 # Select the best model from GridSearchCV
 best_model = grid.best_estimator_
 print("Final Best Model:", best_model)
 
-## **9. Model Performance Evaluation**
+## **8. Model Performance Evaluation**
 
 # Predict on the test set
 y_pred = best_model.predict(X_test)
@@ -109,7 +99,7 @@ print("Test Accuracy:", accuracy_score(y_test, y_pred))
 print("Classification Report:\n", classification_report(y_test, y_pred))
 print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
 
-"""## **Save Model**"""
+##9. **Save Model**
 import pickle
 with open("employee_model.pkl", "wb") as f:
     pickle.dump(grid.best_estimator_, f)
