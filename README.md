@@ -60,12 +60,12 @@ python app.py
 
 | Age | MonthlyIncome | JobRole               | OverTime | Department             | YearsAtCompany | Attrition  |
 |-----|---------------|-----------------------|----------|------------------------|----------------|------------|
-| 41  | 5993          | Sales Executive       | Yes      | Sales                  | Yes            | ✅ Yes    |
-| 49  | 5130          | Research Scientist    | No       | Research & Development | No             | ❌ No     |
-| 37  | 2090          | Laboratory Technician | Yes      | Research & Development | Yes            | ✅ Yes    |
-| 33  | 2909          | Research Scientist    | Yes      | Research & Development | No             | ❌ No     |
-| 27  | 3468          | Laboratory Technician | No       | Research & Development | Yes            | ❌ No     |
-
+| 41  | 5993          | Sales Executive       | Yes      | Sales                  | 6              | ✅ Yes    |
+| 49  | 5130          | Research Scientist    | No       | Research & Development | 10             | ❌ No     |
+| 37  | 2090          | Laboratory Technician | Yes      | Research & Development | 0              | ✅ Yes    |
+| 33  | 2909          | Research Scientist    | Yes      | Research & Development | 8              | ❌ No     |
+| 27  | 3468          | Laboratory Technician | No       | Research & Development | 2              | ❌ No     |
+ 
 
 
 ---
